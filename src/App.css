@@ -1,1 +1,23 @@
-body {margin: 0;}
+@font-face {
+  font-family: "WorkSans";
+  font-weight: 500;
+  src: url('./fonts/WorkSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: "WorkSans";
+  font-weight: 900;
+  src: url('./fonts/WorkSans-Black.ttf');
+}
+
+:root {
+  --lg: 48px;
+
+  --white: #ffffff;
+  --blue: #070562;
+  --orange: #FF8C19;
+}
+
+body {
+  margin: 0;
+}
