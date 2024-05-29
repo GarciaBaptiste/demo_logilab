@@ -11,7 +11,7 @@
 }
 
 :root {
-  --sm: 12px;
+  --sm: 14px;
   --md: 24px;
   --lg: 48px;
 
@@ -21,5 +21,11 @@
 }
 
 body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "WorkSans";
+}
+
+p {
   margin: 0;
 }
