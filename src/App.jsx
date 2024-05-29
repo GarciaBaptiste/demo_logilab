@@ -32,7 +32,7 @@ const AboutButton = styled.a`
   font-family: "WorkSans";
   position: fixed;
   right: calc(50vw - 680px);
-  top: 70px;
+  top: calc(var(--lg) * 2.1);
   border-radius: 100%;
   padding: var(--sm) var(--md);
   color: var(--blue);
