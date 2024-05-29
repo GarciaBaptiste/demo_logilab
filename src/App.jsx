@@ -28,6 +28,17 @@ const MenuItem = styled.a`
   color: var(--blue);
 `;
 
+const AboutButton = styled.a`
+  font-family: "WorkSans";
+  position: fixed;
+  right: calc(50vw - 680px);
+  top: 70px;
+  border-radius: 100%;
+  padding: var(--sm) var(--md);
+  color: var(--blue);
+  background: var(--white);
+`;
+
 function App() {
   return (
     <>
@@ -38,6 +49,7 @@ function App() {
         <MenuItem>Nos clients</MenuItem>
         <MenuItem>Web sémantique</MenuItem>
       </MainMenu>
+      <AboutButton>À propos</AboutButton>
     </>
   )
 }
