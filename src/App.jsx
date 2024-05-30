@@ -25,6 +25,11 @@ const MenuItem = styled.a`
   text-align: right;
   font-size: var(--lg);
   color: var(--blue);
+  transition: 0.2s;
+  &:hover {
+    color: var(--orange);
+    cursor: pointer;
+  }
 `;
 
 const AboutButton = styled.a`
