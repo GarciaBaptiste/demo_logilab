@@ -17,20 +17,44 @@ const MainMenu = styled.nav`
   flex-direction: column;
   right: calc(50vw + var(--md));
   top: calc(50vh - (var(--lg) * 2.4));
-  justify-content: flex-end;
+  align-items: flex-end;
 `;
 
-const MenuItem = styled.a`
+const MenuItemWrapper = styled.a`
   font-weight: 900;
   text-align: right;
   font-size: var(--lg);
   color: var(--blue);
+  position: relative;
   transition: 0.2s;
   &:hover {
     color: var(--orange);
     cursor: pointer;
   }
 `;
+
+const MenuItemContent = styled.p`
+  position: relative;  
+  z-index: 1;
+`;
+
+const MenuItemUnderline = styled.div`
+  position: absolute;
+  width: 100%;
+  height: var(--sm);
+  background: var(--orange);
+  bottom: calc(var(--sm) / 2);
+  z-index: 0;
+`;
+
+const MenuItem = ({ children }) => {
+  return (
+    <MenuItemWrapper>
+      <MenuItemContent>{children}</MenuItemContent>
+      <MenuItemUnderline />
+    </MenuItemWrapper>
+  )
+}
 
 const AboutButton = styled.a`
   position: fixed;
