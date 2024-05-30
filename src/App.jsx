@@ -71,6 +71,13 @@ const CTAButton = styled.a`
   color: var(--white);
   border-radius: var(--md);
   display: inline-block;
+  transition: .3s;
+  border: solid 1px var(--blue);
+  &:hover {
+    background: var(--white);
+    color: var(--blue);
+    cursor: pointer;
+  }
 `;
 
 function App() {
