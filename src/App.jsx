@@ -66,7 +66,7 @@ const SubFooter = styled.div`
 `;
 
 const CTAButton = styled.a`
-  padding: var(--sm);
+  padding: var(--sm) var(--md);
   background: var(--blue);
   color: var(--white);
   border-radius: var(--md);
