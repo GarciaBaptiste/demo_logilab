@@ -20,19 +20,6 @@ const MainMenu = styled.nav`
   align-items: flex-end;
 `;
 
-const MenuItemWrapper = styled.a`
-  font-weight: 900;
-  text-align: right;
-  font-size: var(--lg);
-  color: var(--blue);
-  position: relative;
-  transition: 0.2s;
-  &:hover {
-    color: var(--orange);
-    cursor: pointer;
-  }
-`;
-
 const MenuItemContent = styled.p`
   position: relative;  
   z-index: 1;
@@ -41,10 +28,26 @@ const MenuItemContent = styled.p`
 const MenuItemUnderline = styled.div`
   position: absolute;
   width: 100%;
-  height: var(--sm);
+  height: 0;
   background: var(--orange);
   bottom: calc(var(--sm) / 2);
   z-index: 0;
+  transition: 0.2s;
+`;
+
+const MenuItemWrapper = styled.a`
+  font-weight: 900;
+  text-align: right;
+  font-size: var(--lg);
+  color: var(--blue);
+  position: relative;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    & > ${MenuItemUnderline} {
+      height: var(--sm);
+    }
+  }
 `;
 
 const MenuItem = ({ children }) => {
