@@ -1,6 +1,8 @@
 import react from 'react'
 import styled from 'styled-components'
 import './App.css'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 import LogilabLogo from './assets/logo_logilab.svg'
 import SmileyFace from './assets/smiley_face.svg'
