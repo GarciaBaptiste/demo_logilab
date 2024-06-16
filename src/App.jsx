@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import './App.css'
 
 import LogilabLogo from './assets/logo_logilab.svg'
+import SmileyFace from './assets/smiley_face.svg'
 
 const StyledLogilabLogo = styled.img`
   position: fixed;
@@ -95,6 +96,13 @@ const SubFooter = styled.div`
   display: flex;
   align-items: center;
   gap: var(--md);
+  justify-content: space-between;
+`;
+
+const SubFooterContact = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--md);
 `;
 
 const CTAButton = styled.a`
@@ -109,6 +117,37 @@ const CTAButton = styled.a`
     background: var(--white);
     color: var(--blue);
     cursor: pointer;
+  }
+`;
+
+const SubFooterMiniButtons = styled.div`
+  display: flex;
+  gap: 6px;
+`;
+
+const MiniButton = styled.button`
+  width: var(--md);
+  height: var(--md);
+  border-radius: var(--md);
+  border: solid 1px var(--blue);
+  text-align: center;
+  padding: 0;
+`;
+
+const MiniButtonLicence = () => {
+  return(
+    <MiniButton>cc</MiniButton>
+  )
+}
+
+const MiniButtonSmiley = styled(MiniButton)`
+  background-image: url(${SmileyFace});
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform .2s;
+  &:hover {
+    cursor: pointer;
+    transform: rotate(90deg);
   }
 `;
 
@@ -130,8 +169,14 @@ function App() {
           <p>Site Internet construit avec CubicWeb</p>
         </StyledAddress>
         <SubFooter>
-          <p>Un projet, une question ?</p>
-          <CTAButton>Contactez-nous</CTAButton>
+          <SubFooterContact>
+            <p>Un projet, une question ?</p>
+            <CTAButton>Contactez-nous</CTAButton>
+          </SubFooterContact>
+          <SubFooterMiniButtons>
+            <MiniButtonLicence />
+            <MiniButtonSmiley />
+          </SubFooterMiniButtons>
         </SubFooter>
       </Footer>
     </>
