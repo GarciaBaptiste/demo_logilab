@@ -1,9 +1,13 @@
 import react, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import './App.css'
+
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Bounce } from 'gsap/all'
+import { TextPlugin } from 'gsap/TextPlugin'
+
+gsap.registerPlugin(TextPlugin)
 
 import LogilabLogo from './assets/logo_logilab.svg'
 import SmileyFace from './assets/smiley_face.svg'
@@ -129,25 +133,40 @@ const SubFooterMiniButtons = styled.div`
 `;
 
 const MiniButton = styled.button`
-  width: var(--md);
+  min-width: var(--md);
   height: var(--md);
   border-radius: var(--md);
   border: solid 1px var(--blue);
   text-align: center;
-  padding: 0;
+  padding: 0 4px;
+  cursor: pointer;
 `;
 
-const MiniButtonLicence = () => {
-  return (
-    <MiniButton>cc</MiniButton>
-  )
+const GSAPMiniButtonLicence = () => {
+  const buttonRef = useRef()
+
+  useGSAP(() => {
+    const element = buttonRef.current
+
+    const handleMouseEnter = () => {
+      gsap.to(element, { text: "creative commons", duration: 1 })
+    }
+
+    const handleMouseLeave = () => {
+      gsap.to(element, { text: "cc", duration: 1 })
+    }
+
+    element.addEventListener('mouseenter', handleMouseEnter)
+    element.addEventListener('mouseleave', handleMouseLeave)
+  })
+
+  return <MiniButton ref={buttonRef}>cc</MiniButton>
 }
 
 const MiniButtonSmiley = styled(MiniButton)`
   background-image: url(${SmileyFace});
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;
 `;
 
 const GSAPMiniButtonSmiley = () => {
@@ -194,7 +213,7 @@ function App() {
             <CTAButton>Contactez-nous</CTAButton>
           </SubFooterContact>
           <SubFooterMiniButtons>
-            <MiniButtonLicence />
+            <GSAPMiniButtonLicence />
             <GSAPMiniButtonSmiley />
           </SubFooterMiniButtons>
         </SubFooter>
