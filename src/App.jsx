@@ -1,8 +1,9 @@
-import react from 'react'
+import react, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import './App.css'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Bounce } from 'gsap/all'
 
 import LogilabLogo from './assets/logo_logilab.svg'
 import SmileyFace from './assets/smiley_face.svg'
@@ -137,7 +138,7 @@ const MiniButton = styled.button`
 `;
 
 const MiniButtonLicence = () => {
-  return(
+  return (
     <MiniButton>cc</MiniButton>
   )
 }
@@ -146,12 +147,34 @@ const MiniButtonSmiley = styled(MiniButton)`
   background-image: url(${SmileyFace});
   background-repeat: no-repeat;
   background-position: center;
-  transition: transform .2s;
-  &:hover {
-    cursor: pointer;
-    transform: rotate(90deg);
-  }
+  cursor: pointer;
 `;
+
+const GSAPMiniButtonSmiley = () => {
+  const buttonRef = useRef()
+
+  useGSAP(() => {
+    const element = buttonRef.current
+
+    const handleMouseEnter = () => {
+      gsap.to(element, { rotation: 90, duration: 0.5, ease: Bounce.easeOut })
+    }
+
+    const handleMouseLeave = () => {
+      gsap.to(element, { rotation: 0, duration: 0.5, ease: Bounce.easeOut })
+    }
+
+    element.addEventListener('mouseenter', handleMouseEnter)
+    element.addEventListener('mouseleave', handleMouseLeave)
+
+    return () => {
+      element.removeEventListener('mouseenter', handleMouseEnter)
+      element.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, { scope: buttonRef })
+
+  return <MiniButtonSmiley ref={buttonRef} />
+}
 
 function App() {
   return (
@@ -177,7 +200,7 @@ function App() {
           </SubFooterContact>
           <SubFooterMiniButtons>
             <MiniButtonLicence />
-            <MiniButtonSmiley />
+            <GSAPMiniButtonSmiley />
           </SubFooterMiniButtons>
         </SubFooter>
       </Footer>
