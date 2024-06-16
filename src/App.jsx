@@ -166,12 +166,7 @@ const GSAPMiniButtonSmiley = () => {
 
     element.addEventListener('mouseenter', handleMouseEnter)
     element.addEventListener('mouseleave', handleMouseLeave)
-
-    return () => {
-      element.removeEventListener('mouseenter', handleMouseEnter)
-      element.removeEventListener('mouseleave', handleMouseLeave)
-    }
-  }, { scope: buttonRef })
+  })
 
   return <MiniButtonSmiley ref={buttonRef} />
 }
