@@ -149,11 +149,11 @@ const GSAPMiniButtonLicence = () => {
     const element = buttonRef.current
 
     const handleMouseEnter = () => {
-      gsap.to(element, { text: "creative commons", duration: 1 })
+      gsap.to(element, { text: "creative commons", duration: .5, ease: "power4.out" })
     }
 
     const handleMouseLeave = () => {
-      gsap.to(element, { text: "cc", duration: 1 })
+      gsap.to(element, { text: "cc", duration: .5, ease: "power4.out" })
     }
 
     element.addEventListener('mouseenter', handleMouseEnter)
@@ -176,11 +176,13 @@ const GSAPMiniButtonSmiley = () => {
     const element = buttonRef.current
 
     const handleMouseEnter = () => {
+      gsap.to(element, { scale: .75, duration: 0.1 })
+      gsap.to(element, { scale: 1, duration: 0.5, delay: 0.15, ease: Bounce.easeOut })
       gsap.to(element, { rotation: 90, duration: 0.5, ease: Bounce.easeOut })
     }
 
     const handleMouseLeave = () => {
-      gsap.to(element, { rotation: 0, duration: 0.5, ease: Bounce.easeOut })
+      gsap.to(element, { rotation: 0, scale: 1, duration: 0.5, ease: Bounce.easeOut })
     }
 
     element.addEventListener('mouseenter', handleMouseEnter)
